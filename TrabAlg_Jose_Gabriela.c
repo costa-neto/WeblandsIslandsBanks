@@ -131,7 +131,7 @@ char * traduzir_numero( char * nome, int n )
     int d = n / 10 - c * 10;
     int u = n - (n / 10) * 10;
     int dv = d * 10 + u;
-
+	
 
     strcpy( nome, unidades[ u ] );
 
@@ -174,17 +174,20 @@ char * traduzir_numero( char * nome, int n )
         strcatb( nome, " e " );
         strcatb( nome, centenas[c] );
     }
-
     return nome;
 }
 
 void preencheCheque(){
-	double valorCheque;
-	char numero[ 100 ];
+	double valorCheque, inteiro, decimal;
+	char bits[ 100 ];
+	char centbits[100];
 	moveXY(1, 14, "INSIRA A QUANTIA DESEJADA EM BITS: ");
     scanf("%lf",&valorCheque);
-    traduzir_numero(numero, valorCheque);
-    printf("\n %s", numero);
+    decimal = modf(valorCheque, &inteiro);
+	traduzir_numero(bits, (int)inteiro);
+    printf("\n %s bits e", bits);
+    traduzir_numero(centbits, (decimal*100));
+    printf(" %s centbits", centbits);
 }
 
 void navegmenu()
