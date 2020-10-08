@@ -37,14 +37,29 @@ void SetColor(int ForgC) //cores
 
 void senha()
 {
-    moveXY(40,14,"digite sua senha: ");
+    srand((unsigned int)(time(NULL)));
+	int index = 0;
+
+	char char1[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	char senhagerada[6];
+	for(index = 0; index < 4; index++)
+	{
+        senhagerada[index] = char1[rand() % (sizeof char1 - 1)];
+	}
+	moveXY(40,14,"sua senha: ");
+	for(index = 0; index < 4; index++)
+    {
+        printf("%c",senhagerada[index]);
+    }
+    getch();
+    system("cls");
     int a=10;
     do{
-    char str1[15], str2[15];
+    char str1[15];
     SetColor(15);
+    moveXY(40,14,"insira sua senha: ");
     scanf("%s",str1);
-    strcpy(str2, "algoritmos2");
-    a = strcmp(str1, str2);
+    a = strcmp(str1, senhagerada);
     if (a!=0)
     {
         system("cls");
