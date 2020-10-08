@@ -41,7 +41,7 @@ void senha()
 	int index = 0;
 
 	char char1[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	char senhagerada[6];
+	char senhagerada[4];
 	for(index = 0; index < 4; index++)
 	{
         senhagerada[index] = char1[rand() % (sizeof char1 - 1)];
